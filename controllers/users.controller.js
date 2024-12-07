@@ -3,7 +3,7 @@ import {
   comparePassword,
   generateToken,
 } from "../helpers/auth.helper.js";
-import User from "../models/users.model.js  ";
+import User from "../models/users.model.js";
 
 export const registerUser = async (req, res) => {
   const { email, password } = req.body;
