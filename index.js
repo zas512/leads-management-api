@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import connectDB from "./config/db.js";
 import usersRouter from "./routes/users.route.js";
 import leadsRouter from "./routes/leads.route.js";
+import testRouter from "./routes/test.route.js";
 dotenv.config();
 
 const app = express();
@@ -14,7 +15,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use("/users", usersRouter);
 app.use("/leads", leadsRouter);
-
+app.use("/test", testRouter);
 app.use("/", (req, res) => {
   res.status(200).json({ message: "Hello World" });
 });
