@@ -10,15 +10,20 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://leads-management-frontend.vercel.app",
+    ],
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 app.use(express.json());
 app.use("/users", usersRouter);
 app.use("/leads", leadsRouter);
 app.use("/test", testRouter);
-app.use("/", (req, res) => {
-  res.status(200).json({ message: "Hello World" });
-});
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
 });

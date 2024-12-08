@@ -43,7 +43,6 @@ export const registerUser = async (req, res) => {
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
   console.log("[loginUser] Received login request with email:", email);
-
   if (!email || !password) {
     console.log("[loginUser] Missing email or password in request");
     return res.status(400).json({ message: "Email and password are required" });
@@ -75,7 +74,7 @@ export const loginUser = async (req, res) => {
     });
 
     console.log(`[loginUser] Login successful for user: ${email}`);
-    return res.status(200).json({ message: "Login successful" });
+    return res.status(200).json({ message: "Login successful", user: user });
   } catch (error) {
     console.error("[loginUser] Error during login:", error);
     return res.status(500).json({ message: "Internal server error" });
